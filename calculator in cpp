@@ -1,0 +1,128 @@
+#include <iostream>
+using namespace std;
+
+// -------class opertation------
+class stand_cal
+{
+int num1,num2,ans;
+public:
+    static double addition(double ,double);
+    static double subtraction(double,double);
+    static double multiply(double,double);
+    static double division(double,double *);
+};
+
+// stand_cal-------addition-----
+
+double stand_cal::addition(double num1,double num2 )
+{
+    return(num1+num2);
+}
+double stand_cal :: subtraction (double num1,double num2)
+{
+    return (num1-num2);
+}
+double stand_cal::multiply(double num1,double num2)
+{   
+    return (num1*num2);
+}
+double stand_cal::division(double num1,double *num2)
+{
+    if(*num2==0)
+    {
+        cout<<"divisor is nerver be 0:\n";
+        
+    }
+    else{
+        return(num1/(*num2));  
+    }
+    
+}
+
+
+
+
+
+    
+
+
+
+
+
+// --------------------------main function---------------------
+ int standardCalculator();
+int main()
+{
+    //  stand_cal obj1;
+     int ans,calculatorChoice=0;
+    
+    
+    do{
+         cout<<"choose type of calculator:";
+         cout<<"\n1.standard calculator:\n2.scientific calcullator\n3.exit\n";
+        cin>>calculatorChoice;
+
+        switch (calculatorChoice)
+        {
+        case 1:
+            cout<<"\n---------standard calculator:-----------\n" ; 
+           ans= standardCalculator();
+           cout<<ans;
+                      break;
+        case 2:
+           cout<<"\n---------scientific calculator-----------\n";
+           break;
+         case 3:
+            return 0;  
+        default:
+            break;
+        }
+
+    }
+    while(calculatorChoice!=3);
+
+
+
+    
+    return 0;
+}
+
+
+// ----------------functions for standard calculaor------
+     int standardCalculator()
+     {
+         int operation=0,num1=0,num2=0,ans=0,*num3;
+         do{
+             cout<<"\nchoose which operation you want to perform:\n";
+             cout<<"\n1.ADDITION\n2.SUBTRACTION\n3.MULTIPLICATION\n4.DIVISION\n5.EXIT\n";
+             cin>>operation;
+             switch (operation)
+             {
+             case 1:
+                 cout<<"\nEnter two numbers:\n";
+                 cin>>num1>>num2;
+                 cout<< stand_cal::addition( num1,num2);
+                //  return 0;
+                 break;
+              case 2:
+                   cout<<"\nenter two numbers:\n";
+                   cin>>num1>>num2;
+                   cout<<stand_cal::subtraction(num1,num2);
+                   break;
+              case 3:
+              cout<<"\nenter two numbers:\n";
+              cin>>num1>>num2;
+              cout<<stand_cal::multiply(num1,num2);
+              break;
+               case 4:
+                     cout<<"\nENter two numbers:\n";
+                     cin>>num1>>*num3;
+                    //  cout<<stand_cal::division(num1,&num3);        
+             case 5:
+                  return 0;
+             default:
+                 break;
+             }
+         }
+         while(operation!=5);
+     }
