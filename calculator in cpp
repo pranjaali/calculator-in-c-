@@ -9,8 +9,13 @@ public:
     static double addition(double ,double);
     static double subtraction(double,double);
     static double multiply(double,double);
-    static double division(double,double *);
+    static double division(double,double );
+   
+
+ 
 };
+
+
 
 // stand_cal-------addition-----
 
@@ -26,18 +31,23 @@ double stand_cal::multiply(double num1,double num2)
 {   
     return (num1*num2);
 }
-double stand_cal::division(double num1,double *num2)
+double stand_cal::division(double num1,double num2)
 {
-    if(*num2==0)
+    while(num2==0)
     {
         cout<<"divisor is nerver be 0:\n";
-        
-    }
-    else{
-        return(num1/(*num2));  
+        cout<<"\nplease enter the divisor:\n";
+        cin>>num2;
     }
     
+        return(num1/(num2));  
+    
+    
 }
+
+// ----------scientifi Calculator -----------------
+
+
 
 
 
@@ -51,11 +61,13 @@ double stand_cal::division(double num1,double *num2)
 
 // --------------------------main function---------------------
  int standardCalculator();
+ int scientificCalculator();
 int main()
 {
     //  stand_cal obj1;
      int ans,calculatorChoice=0;
-    
+     stand_cal obj1;
+    //  cout<<obj1.addition(1,2);
     
     do{
          cout<<"choose type of calculator:";
@@ -71,6 +83,7 @@ int main()
                       break;
         case 2:
            cout<<"\n---------scientific calculator-----------\n";
+           ans=scientificCalculator();
            break;
          case 3:
             return 0;  
@@ -90,7 +103,7 @@ int main()
 
 // ----------------functions for standard calculaor------
      int standardCalculator()
-     {
+     {    stand_cal obj2;
          int operation=0,num1=0,num2=0,ans=0,*num3;
          do{
              cout<<"\nchoose which operation you want to perform:\n";
@@ -102,6 +115,7 @@ int main()
                  cout<<"\nEnter two numbers:\n";
                  cin>>num1>>num2;
                  cout<< stand_cal::addition( num1,num2);
+                //  cout<<obj2.fun(num1,num2);
                 //  return 0;
                  break;
               case 2:
@@ -115,14 +129,51 @@ int main()
               cout<<stand_cal::multiply(num1,num2);
               break;
                case 4:
+               int *ptr;
                      cout<<"\nENter two numbers:\n";
-                     cin>>num1>>*num3;
-                    //  cout<<stand_cal::division(num1,&num3);        
+                     cin>>num1>>num2;
+                     ptr=&num2;
+                    cout<<"ans is ;>>>"<<stand_cal::division(num1,*ptr)<<"\n";        
              case 5:
                   return 0;
              default:
+                 cout<<"\nplease enter valid choice:\n";
                  break;
              }
          }
          while(operation!=5);
      }
+
+    //  -----------------------------scentificCalculator()------------------------
+
+    int scientificCalculator()
+    {
+        int scientificChoice=0;
+        do{
+            cout<<"\nchose the operation from the list you want to perform:\n";
+            cout<<"\n1.square of two numbers\n2.cube of number \n3.modulus of two numbers\n4.sin function\n5.exit   \n";
+            cin>>scientificChoice;
+
+            switch (scientificChoice)
+            {
+                case 1:
+
+                   break;
+                
+                case 2:
+                   break;
+                
+                case 3:
+                   break;
+                
+                case 4:
+                   break;
+                
+                case 5:
+                return 0;
+                   break;            
+            }
+        }
+        while (scientificChoice!=5);
+        
+    }
